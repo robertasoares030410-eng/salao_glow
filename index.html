@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Beauty Lounge | Salão de Beleza</title>
+
+<style>
+:root {
+  --rosa: #b76e86;
+  --rosa-claro: #f8e8ed;
+  --vinho: #763d55;
+  --creme: #fffaf8;
+  --texto: #40353a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--creme);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px #00000012;
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  color: var(--rosa);
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--texto);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--rosa);
+}
+
+.hero {
+  min-height: 500px;
+  background: linear-gradient(
+    135deg,
+    #e9c0ce,
+    #fff5f3,
+    #f2d8e1
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 6vw, 65px);
+  color: var(--vinho);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 650px;
+  margin: 0 auto 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--rosa);
+  color: white;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--vinho);
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 75px 7%;
+  text-align: center;
+  scroll-margin-top: 110px;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  color: var(--vinho);
+  margin-bottom: 20px;
+}
+
+.descricao {
+  max-width: 780px;
+  margin: 0 auto 30px;
+}
+
+.rosa {
+  background: var(--rosa-claro);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(240px, 1fr)
+  );
+  gap: 25px;
+  max-width: 1150px;
+  margin: 35px auto;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px #00000012;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.conteudo {
+  padding: 25px;
+}
+
+.card h3 {
+  color: var(--vinho);
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.preco {
+  color: var(--rosa);
+  font-size: 19px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.equipe img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.cargo {
+  color: var(--rosa);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.estrelas {
+  color: #d4a045;
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.depoimento {
+  padding: 30px;
+}
+
+.depoimento p {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.contato {
+  max-width: 650px;
+  margin: 30px auto;
+  display: grid;
+  gap: 15px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #dfc3cd;
+  border-radius: 10px;
+  font: inherit;
+  background: white;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.informacoes {
+  margin: 25px auto;
+  line-height: 2;
+}
+
+.informacoes a {
+  color: var(--vinho);
+  overflow-wrap: anywhere;
+}
+
+.mapa {
+  width: 100%;
+  max-width: 850px;
+  height: 320px;
+  border: none;
+  border-radius: 15px;
+  margin-top: 25px;
+}
+
+.aviso {
+  font-size: 13px;
+  margin-top: 15px;
+  color: #78646d;
+}
+
+footer {
+  background: var(--vinho);
+  color: white;
+  padding: 35px 15px;
+  text-align: center;
+}
+
+footer h3 {
+  font-family: Georgia, serif;
+  margin-bottom: 10px;
+}
+
+.whatsapp-flutuante {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25d366;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 15px #00000030;
+  z-index: 200;
+}
+
+@media(max-width: 650px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  section {
+    padding: 55px 5%;
+  }
+
+  h2 {
+    font-size: 29px;
+  }
+
+  .equipe img {
+    height: 390px;
+  }
+
+  .whatsapp-flutuante {
+    bottom: 12px;
+    right: 12px;
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CABEÇALHO -->
+<header>
+  <div class="logo">
+    Glow Beauty Lounge
+  </div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#localizacao">Localização</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<!-- INÍCIO -->
+<section class="hero" id="inicio">
+  <div>
+    <h1>Glow Beauty Lounge</h1>
+
+    <p>
+      Sua beleza merece brilhar!
+      Um espaço dedicado à beleza,
+      autoestima e bem-estar.
+    </p>
+
+    <a href="#servicos" class="btn">
+      Conheça nossos serviços
+    </a>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <h2>Sobre Nós</h2>
+
+  <p class="descricao">
+    Bem-vinda ao Glow Beauty Lounge!
+
+    Nosso salão nasceu com o propósito
+    de proporcionar momentos especiais
+    de beleza, cuidado e autoestima.
+
+    Oferecemos um ambiente acolhedor,
+    elegante e confortável, onde cada
+    cliente recebe atenção especial.
+
+    Nossa missão é realçar sua beleza
+    natural e fazer você se sentir
+    ainda mais confiante e maravilhosa.
+  </p>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="rosa">
+  <h2>Nossos Serviços</h2>
+
+  <p class="descricao">
+    Conheça os cuidados que preparamos
+    para você!
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="conteudo">
+        <h3>Cabeleireira</h3>
+
+        <p>
+          Cortes, escovas, hidratações
+          e tratamentos capilares.
+        </p>
+
+        <p class="preco">
+          Consulte nossos preços
+        </p>
+
+        <button class="btn"
+          onclick="agendar('Cabeleireira')">
+          Agendar horário
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="conteudo">
+        <h3>Maquiagem</h3>
+
+        <p>
+          Maquiagem social, festas,
+          eventos e ocasiões especiais.
+        </p>
+
+        <p class="preco">
+          Consulte nossos preços
+        </p>
+
+        <button class="btn"
+          onclick="agendar('Maquiagem')">
+          Agendar horário
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="conteudo">
+        <h3>Manicure</h3>
+
+        <p>
+          Manicure, esmaltação,
+          cuidados com as unhas
+          e nail art.
+        </p>
+
+        <p class="preco">
+          Consulte nossos preços
+        </p>
+
+        <button class="btn"
+          onclick="agendar('Manicure')">
+          Agendar horário
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe">
+  <h2>Nossa Equipe</h2>
+
+  <p class="descricao">
+    Conheça as profissionais que fazem
+    a beleza acontecer!
+  </p>
+
+  <div class="cards equipe">
+
+    <!-- FOTO DOS PINCÉIS -->
+    <div class="card">
+      <img
+        src="img/maquiadora.jpeg"
+        alt="Profissional maquiadora"
+      >
+
+      <div class="conteudo">
+        <h3>Nossa Maquiadora</h3>
+
+        <p class="cargo">
+          Especialista em maquiagem
+        </p>
+
+        <p>
+          Dedicação, criatividade
+          e técnicas especiais para
+          valorizar sua beleza.
+        </p>
+      </div>
+    </div>
+
+    <!-- FOTO DOS ESMALTES -->
+    <div class="card">
+      <img
+        src="img/esmaltes01.jpeg"
+        alt="Profissional manicure"
+      >
+
+      <div class="conteudo">
+        <h3>Nossa Manicure</h3>
+
+        <p class="cargo">
+          Especialista em unhas
+        </p>
+
+        <p>
+          Cuidado e atenção em cada
+          detalhe para unhas lindas.
+        </p>
+      </div>
+    </div>
+
+    <!-- FOTO DO SECADOR -->
+    <div class="card">
+      <img
+        src="img/cabeleleira.jpeg"
+        alt="Profissional cabeleireira"
+      >
+
+      <div class="conteudo">
+        <h3>Nossa Cabeleireira</h3>
+
+        <p class="cargo">
+          Especialista em cabelos
+        </p>
+
+        <p>
+          Transformações capilares
+          com carinho, criatividade
+          e dedicação.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="rosa">
+  <h2>Depoimentos</h2>
+
+  <p class="descricao">
+    Veja o que nossas clientes dizem!
+  </p>
+
+  <div class="cards">
+
+    <div class="card depoimento">
+      <div class="estrelas">★★★★★</div>
+
+      <p>
+        "Amei o atendimento!
+        O salão é maravilhoso e fui
+        muito bem recebida.
+        Recomendo demais!"
+      </p>
+
+      <h3>Rita</h3>
+    </div>
+
+    <div class="card depoimento">
+      <div class="estrelas">★★★★★</div>
+
+      <p>
+        "As profissionais são incríveis!
+        Fiquei apaixonada pelo resultado.
+        Com certeza voltarei!"
+      </p>
+
+      <h3>Rebeca</h3>
+    </div>
+
+    <div class="card depoimento">
+      <div class="estrelas">★★★★★</div>
+
+      <p>
+        "Um ambiente lindo, aconchegante
+        e com atendimento impecável.
+        Adorei minha experiência!"
+      </p>
+
+      <h3>Sandra</h3>
+    </div>
+
+    <div class="card depoimento">
+      <div class="estrelas">★★★★★</div>
+
+      <p>
+        "Adorei a experiência no
+        Glow Beauty Lounge!
+
+        O atendimento é maravilhoso,
+        o ambiente é superaconchegante
+        e o cuidado com cada detalhe
+        faz toda a diferença.
+
+        Recomendo muito!"
+      </p>
+
+      <h3>Renata</h3>
+    </div>
+
+  </div>
+
+  <p class="aviso">
+    Depoimentos ilustrativos para
+    apresentação do projeto.
+  </p>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao">
+  <h2>Nossa Localização</h2>
+
+  <p>
+    Shopping Tamboré
+  </p>
+
+  <p>
+    Alphaville – Barueri/SP
+  </p>
+
+  <iframe
+    class="mapa"
+    title="Mapa do Shopping Tamboré"
+    src="https://www.google.com/maps?q=Shopping%20Tambor%C3%A9%20Barueri&output=embed"
+    loading="lazy">
+  </iframe>
+
+  <p class="aviso">
+    Localização informada para o projeto.
+    Confirme o endereço antes de publicar.
+  </p>
+
+  <br>
+
+  <a
+    class="btn"
+    href="https://www.google.com/maps/search/?api=1&query=Shopping+Tambore+Barueri"
+    target="_blank"
+    rel="noopener noreferrer">
+    Ver localização
+  </a>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="rosa">
+  <h2>Entre em Contato</h2>
+
+  <p>
+    Agende seu horário com nossa equipe!
+  </p>
+
+  <div class="informacoes">
+
+    <p>
+      <strong>WhatsApp:</strong>
+      <a href="https://wa.me/5511989930825"
+         target="_blank"
+         rel="noopener noreferrer">
+        (11) 98993-0825
+      </a>
+    </p>
+
+    <p>
+      <strong>E-mail:</strong>
+      <a href="mailto:robertasoares030410@gmail.com">
+        robertasoares030410@gmail.com
+      </a>
+    </p>
+
+    <p>
+      <strong>Endereço:</strong>
+      Shopping Tamboré – Alphaville
+    </p>
+
+  </div>
+
+  <h3>Agende seu atendimento</h3>
+
+  <form class="contato" id="formContato">
+
+    <input
+      type="text"
+      id="nome"
+      placeholder="Digite seu nome"
+      required
+    >
+
+    <input
+      type="tel"
+      id="telefone"
+      placeholder="Digite seu telefone"
+      required
+    >
+
+    <select id="servico" required>
+      <option value="">
+        Selecione o serviço
+      </option>
+
+      <option value="Cabeleireira">
+        Cabeleireira
+      </option>
+
+      <option value="Maquiagem">
+        Maquiagem
+      </option>
+
+      <option value="Manicure">
+        Manicure
+      </option>
+    </select>
+
+    <input
+      type="date"
+      id="data"
+      required
+    >
+
+    <input
+      type="time"
+      id="horario"
+      required
+    >
+
+    <textarea
+      id="mensagem"
+      placeholder="Escreva sua mensagem">
+    </textarea>
+
+    <button type="submit" class="btn">
+      Solicitar agendamento
+    </button>
+
+  </form>
+
+  <p class="aviso">
+    O pedido será enviado pelo WhatsApp.
+    O horário depende de confirmação
+    da equipe do salão.
+  </p>
+
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <h3>Glow Beauty Lounge</h3>
+
+  <p>
+    Sua beleza, nosso cuidado!
+  </p>
+
+  <p>
+    WhatsApp: (11) 98993-0825
+  </p>
+
+  <p>
+    © 2026 Glow Beauty Lounge.
+    Todos os direitos reservados.
+  </p>
+</footer>
+
+<!-- BOTÃO WHATSAPP -->
+<a
+  class="whatsapp-flutuante"
+  href="https://wa.me/5511989930825"
+  target="_blank"
+  rel="noopener noreferrer">
+  WhatsApp
+</a>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// NÚMERO OFICIAL DO SALÃO
+const whatsapp = "5511989930825";
+
+// FUNÇÃO PARA ABRIR WHATSAPP
+function abrirWhatsApp(texto) {
+
+  const url =
+    "https://wa.me/" +
+    whatsapp +
+    "?text=" +
+    encodeURIComponent(texto);
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+// AGENDAR PELO BOTÃO DO SERVIÇO
+function agendar(servico) {
+
+  const texto =
+    "Olá, Glow Beauty Lounge!" +
+    "\nGostaria de agendar um horário." +
+    "\nServiço: " + servico;
+
+  abrirWhatsApp(texto);
+}
+
+// IMPEDIR SELEÇÃO DE DATA PASSADA
+const campoData =
+  document.getElementById("data");
+
+const hoje = new Date();
+
+const ano = hoje.getFullYear();
+const mes = String(
+  hoje.getMonth() + 1
+).padStart(2, "0");
+
+const dia = String(
+  hoje.getDate()
+).padStart(2, "0");
+
+campoData.min =
+  ano + "-" + mes + "-" + dia;
+
+// FORMULÁRIO DE AGENDAMENTO
+document.getElementById(
+  "formContato"
+).addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    const nome =
+      document.getElementById(
+        "nome"
+      ).value.trim();
+
+    const telefone =
+      document.getElementById(
+        "telefone"
+      ).value.trim();
+
+    const servico =
+      document.getElementById(
+        "servico"
+      ).value;
+
+    const data =
+      document.getElementById(
+        "data"
+      ).value;
+
+    const horario =
+      document.getElementById(
+        "horario"
+      ).value;
+
+    const mensagem =
+      document.getElementById(
+        "mensagem"
+      ).value.trim();
+
+    if (
+      !nome ||
+      !telefone ||
+      !servico ||
+      !data ||
+      !horario
+    ) {
+      alert(
+        "Preencha todos os campos obrigatórios."
+      );
+      return;
+    }
+
+    const partes = data.split("-");
+
+    const dataFormatada =
+      partes[2] + "/" +
+      partes[1] + "/" +
+      partes[0];
+
+    const texto =
+      "Olá, Glow Beauty Lounge!" +
+      "\n\nGostaria de solicitar um agendamento." +
+      "\n\nNome: " + nome +
+      "\nTelefone: " + telefone +
+      "\nServiço: " + servico +
+      "\nData desejada: " + dataFormatada +
+      "\nHorário desejado: " + horario +
+      "\nMensagem: " + (mensagem || "Nenhuma") +
+      "\n\nAguardo confirmação. Obrigada!";
+
+    abrirWhatsApp(texto);
+
+  }
+);
+
+</script>
+
+</body>
+</html>
